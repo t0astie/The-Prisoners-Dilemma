@@ -6,14 +6,14 @@ using UnityEngine;
 
 public class PlayGame : MonoBehaviour
 {
-    
+    int[,] playerPoints = {{1,5}, {0, 3}};
     int player1Score;
     int player2Score;
 
     bool playerTurn; // Player 1 is 0, player 2 is 1
 
-    bool player1Move; // 0 is defect, 1 is cooperate
-    bool player2Move;
+    int player1Move; // 0 is defect, 1 is cooperate
+    int player2Move;
 
     int turns;
 
@@ -25,13 +25,13 @@ public class PlayGame : MonoBehaviour
             {
                 playerTurn = !playerTurn;
                 turns++;
-                player2Move = false;
+                player2Move = 0;
                 return;
             }
 
             playerTurn = !playerTurn;
             turns++;
-            player1Move = false;
+            player1Move = 0;
             return;
         }
 
@@ -41,13 +41,13 @@ public class PlayGame : MonoBehaviour
             {
                 playerTurn = !playerTurn;
                 turns++;
-                player2Move = true;
+                player2Move = 1;
                 return;
             }
 
             playerTurn = !playerTurn;
             turns++;
-            player1Move = true;
+            player1Move = 1;
             return;
         }
 
@@ -62,17 +62,21 @@ public class PlayGame : MonoBehaviour
             string player1 = "cooperated";
             string player2 = "cooperated";
 
-            if (player1Move == false)
+            if (player1Move == 0)
             {
                 player1 = "defected";
             }
 
-            if (player2Move == false)
+            if (player2Move == 0)
             {
                 player2 = "defected";
             }
 
-            Debug.Log($"Player 1 has {player1}, player 2 has {player2}");
+            player1Score += playerPoints[player1Move, player2Move];
+            player2Score += playerPoints[player2Move, player1Move];
+
+            Debug.Log($"Player 1 has {player1} ({playerPoints[player1Move, player2Move]}), player 2 has {player2} ({playerPoints[player2Move, player1Move]})");
+            Debug.Log($"Player 1 score is: {player1Score}, player 2 score is: {player2Score}");
         }
     }
 }
