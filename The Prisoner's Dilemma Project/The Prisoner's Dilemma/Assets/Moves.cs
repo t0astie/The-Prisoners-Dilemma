@@ -2,53 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Moves : MonoBehaviour
+public enum Players
 {
-    public enum Players
-    {
-        Player1,
-        Player2
-    }
-
-    public enum Action
-    {
-        Defect,
-        Cooperate
-    }
-    
-    public abstract void ExcecuteMove();
+    Player1,
+    Player2
 }
 
-public class FirstTurn : Moves
+public enum Action
 {
-    public Action move;
-
-    public override void ExcecuteMove()
-    {
-        throw new System.NotImplementedException();
-    }
+    None,
+    Defect,
+    Cooperate
 }
 
-public class OnTheXLastTurn : Moves
+public enum Retaliation
+{
+    None,
+    Defect,
+    Cooperate,
+    SameAsPlayer2PreviousTurn,
+    OppisiteAsPlayer2PreviousTurn
+}
+
+[System.Serializable]
+public struct FirstTurn
+{
+    public Action _action;
+}
+
+[System.Serializable]
+public struct OnTheXLastTurn
+{
+    public Players _player;
+    public int _turn;
+    public Action _action;
+    public Retaliation _retaliation;
+}
+
+[System.Serializable]
+public struct OnThePreviousXAmountOfTurns
 {
     public Players player;
     public int turn;
-    public Moves move;
-
-    public override void ExcecuteMove()
-    {
-        throw new System.NotImplementedException();
-    }
+    public Action action;
+    public Retaliation _retaliation;
 }
 
-public class OnThePreviousXAmountOfTurns : Moves    // If on the X amount of previous turns player did move
+[System.Serializable]
+public struct OnAnyGivenTurn
 {
-    public Players player;
-    public int turn;
-    public Moves move;
-
-    public override void ExcecuteMove()
-    {
-        throw new System.NotImplementedException();
-    }
+    [Range (0f, 100f)] public float chance;
+    public Retaliation _retaliation;
 }
