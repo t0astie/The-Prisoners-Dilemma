@@ -6,20 +6,14 @@ public class Player : MonoBehaviour
 {
     public string _name;
     public int _points;
+    public Dictionary<Moves, int> _moves = new Dictionary<Moves, int>();
 
     private void Start() 
     {
-        
-    }
-
-    public void FirstMove()
-    {
-
-    }
-
-    public void Play(List<bool> player1Moves, List<bool> player2Moves)
-    {
-
+        foreach (Moves move in GetComponents<Moves>())
+        {
+            _moves.Add(move, 0);
+        }
     }
 
     public Player(string name)
