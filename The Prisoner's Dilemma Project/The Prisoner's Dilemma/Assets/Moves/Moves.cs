@@ -11,6 +11,7 @@ public enum Action
 
 public enum Retaliation
 {
+    None,
     Defect,
     Cooperate,
     SameAsPreviousTurn,

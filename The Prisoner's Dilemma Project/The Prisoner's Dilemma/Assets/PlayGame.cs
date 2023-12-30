@@ -46,11 +46,11 @@ public class PlayGame : MonoBehaviour
     public void RunGame()
     {
         int n = 0;
-        for (int i = 0; i < _players.Length - n; i++)
+        for (int i = 0; i < _players.Length; i++)
         {
-            for (int ii = 0; ii < _players.Length - n; ii++)
+            for (int ii = n; ii < _players.Length; ii++)
             {
-                Debug.Log($"{_players[i]} is playing against {_players[ii]}");
+                Debug.Log($"{_players[i].Name} is playing against {_players[ii].Name}");
             }
 
             n++;
