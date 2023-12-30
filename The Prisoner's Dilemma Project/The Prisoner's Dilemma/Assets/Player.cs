@@ -4,24 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    
     public string _name;
-
-    [Header("First Turn")]
-    public FirstTurn firstTurn;
-    
-    [Header("On The X Last Turn")]
-    public OnTheXLastTurn onTheXLastTurn;
-
-    [Header("On The Previous X Amount Of Turns")]
-    public OnThePreviousXAmountOfTurns onThePreviousXAmountOfTurns;
-
-    [Header("On Any Given Turn")]
-    public OnAnyGivenTurn onAnyGivenTurn;
+    public int _points;
 
     private void Start() 
     {
-
+        
     }
 
     public void FirstMove()
@@ -29,7 +17,7 @@ public class Player : MonoBehaviour
 
     }
 
-    public void Play()
+    public void Play(List<bool> player1Moves, List<bool> player2Moves)
     {
 
     }
