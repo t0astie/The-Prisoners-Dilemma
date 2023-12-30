@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnPreviousTurn : Moves // IF PLAYER on the previous turn did ACTION do RETALIATION
+public class OnPreviousTurn : Moves     // IF PLAYER on the previous turn did ACTION do RETALIATION
 {
     public bool _player;    // TRUE is them, FALSE is you
     public Action _action;
