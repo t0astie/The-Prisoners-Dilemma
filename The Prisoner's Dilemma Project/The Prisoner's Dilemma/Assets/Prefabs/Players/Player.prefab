@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5480057526271978962}
   - component: {fileID: 5480057526271978963}
-  - component: {fileID: 5480057526271978972}
+  - component: {fileID: 4967272033750152441}
   - component: {fileID: 5480057526271978973}
   m_Layer: 0
   m_Name: Player
@@ -45,11 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ed3c586f2634844ae5bddad87213da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
+  _name: 1
   _points: 0
   _firstMove: 0
   _moves: []
---- !u!114 &5480057526271978972
+--- !u!114 &4967272033750152441
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -58,9 +58,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5480057526271978960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 770ad01af649e51408040e27ccf343ca, type: 3}
+  m_Script: {fileID: 11500000, guid: c40a0ead4931869429d5a98047d3c033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: 
   _priority: 0
   _action: 0
 --- !u!114 &5480057526271978973
@@ -75,6 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11596943221b9964a89cf5598d3cfe82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: 
   _priority: 0
   _action: 0
   _retaliation: 0

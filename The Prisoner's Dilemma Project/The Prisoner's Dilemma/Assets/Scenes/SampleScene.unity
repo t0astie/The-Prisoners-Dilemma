@@ -567,8 +567,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919e6644acde1cf4888d0119fa6b37a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rounds: 0
-  _roundLengthVariance: 0
+  _rounds: 10
+  _roundLengthVariance: 1
+  gameData:
+    _matches: []
   _players:
   - {fileID: 795965078}
   - {fileID: 1761502238}
@@ -644,7 +646,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5480057526271978963, guid: 2518f971804f4d145ab5bbd2ef4c1885, type: 3}
       propertyPath: _name
-      value: 3
+      value: Always Defect
+      objectReference: {fileID: 0}
+    - target: {fileID: 5480057526271978963, guid: 2518f971804f4d145ab5bbd2ef4c1885, type: 3}
+      propertyPath: _firstMove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5480057526271978973, guid: 2518f971804f4d145ab5bbd2ef4c1885, type: 3}
+      propertyPath: _priority
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5480057526271978973, guid: 2518f971804f4d145ab5bbd2ef4c1885, type: 3}
+      propertyPath: _retaliation
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2518f971804f4d145ab5bbd2ef4c1885, type: 3}
@@ -716,7 +730,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5480057526271978963, guid: 2518f971804f4d145ab5bbd2ef4c1885, type: 3}
       propertyPath: _name
+      value: Tit for Tat
+      objectReference: {fileID: 0}
+    - target: {fileID: 5480057526271978963, guid: 2518f971804f4d145ab5bbd2ef4c1885, type: 3}
+      propertyPath: _firstMove
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5480057526271978973, guid: 2518f971804f4d145ab5bbd2ef4c1885, type: 3}
+      propertyPath: _priority
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5480057526271978973, guid: 2518f971804f4d145ab5bbd2ef4c1885, type: 3}
+      propertyPath: _retaliation
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2518f971804f4d145ab5bbd2ef4c1885, type: 3}
@@ -946,7 +972,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5480057526271978963, guid: 2518f971804f4d145ab5bbd2ef4c1885, type: 3}
       propertyPath: _name
+      value: Always Cooperate
+      objectReference: {fileID: 0}
+    - target: {fileID: 5480057526271978963, guid: 2518f971804f4d145ab5bbd2ef4c1885, type: 3}
+      propertyPath: _firstMove
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5480057526271978973, guid: 2518f971804f4d145ab5bbd2ef4c1885, type: 3}
+      propertyPath: _action
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5480057526271978973, guid: 2518f971804f4d145ab5bbd2ef4c1885, type: 3}
+      propertyPath: _priority
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5480057526271978973, guid: 2518f971804f4d145ab5bbd2ef4c1885, type: 3}
+      propertyPath: _retaliation
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2518f971804f4d145ab5bbd2ef4c1885, type: 3}

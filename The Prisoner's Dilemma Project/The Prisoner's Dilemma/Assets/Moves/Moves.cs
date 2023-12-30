@@ -20,8 +20,9 @@ public enum Retaliation
 
 public abstract class Moves : MonoBehaviour
 {
+    public string Name;
     public int _priority;
-    public abstract Action Play(MatchData data);
+    public abstract Action Play(MatchData data); // Takes the current match data and which player is playing
 
     public Action GetAction(MatchData data, Retaliation retaliation)
     {
@@ -30,7 +31,7 @@ public abstract class Moves : MonoBehaviour
             return Action.Defect;
         }
 
-        if (retaliation == Retaliation.Defect)
+        if (retaliation == Retaliation.Cooperate)
         {
             return Action.Cooperate;
         }
