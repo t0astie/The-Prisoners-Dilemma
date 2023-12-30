@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public string _name;
+    [SerializeField] private string _name;
     public int _points;
     public Action _firstMove;
     public Moves[] _moves;
@@ -23,15 +23,21 @@ public class Player : MonoBehaviour
         {
             if (move._priority < priority)
             {
-                action = move.Play(data);
+                Action pAction = move.Play(data);
+                if (pAction != Action.None)
+                {
+                    action = pAction;
+                    priority = move._priority;
+                }
             }
         }
 
         return action;
     }
 
-    public Player(string name)
+    public string Name 
     {
-        _name = name;
+        get { return _name; }
+        set { _name = value; }
     }
 }

@@ -556,6 +556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919e6644acde1cf4888d0119fa6b37a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _players: []
 --- !u!4 &591423258
 Transform:
   m_ObjectHideFlags: 0
@@ -603,6 +604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Tit for Tat
   _points: 0
+  _moves: []
 --- !u!4 &795965079
 Transform:
   m_ObjectHideFlags: 0
@@ -629,8 +631,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11596943221b9964a89cf5598d3cfe82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _priority: 0
   _action: 0
-  _retaliation: 0
+  _retaliation: 3
 --- !u!114 &795965081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -643,7 +646,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770ad01af649e51408040e27ccf343ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _action: 0
+  _priority: 0
+  _action: 2
 --- !u!1 &1042831438
 GameObject:
   m_ObjectHideFlags: 0

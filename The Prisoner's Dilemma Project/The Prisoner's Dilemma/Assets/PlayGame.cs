@@ -7,11 +7,6 @@ using UnityEngine;
 public struct GameData
 {
     public List<MatchData> _matches;
-
-    public GameData()
-    {
-        _matches = new List<MatchData>();
-    }
 }
 
 public struct MatchData
@@ -23,6 +18,17 @@ public struct MatchData
     public int _player2Points;
     public List<Action> _player1Moves;
     public List<Action> _player2Moves;
+
+    public MatchData(string player1Name, string player2Name)
+    {
+        _player1Name = player1Name;
+        _player2Name = player2Name;
+        _winner = null;
+        _player1Points = 0;
+        _player2Points = 0;
+        _player1Moves = new List<Action>();
+        _player2Moves = new List<Action>();
+    }
 }
 
 public class PlayGame : MonoBehaviour
@@ -39,13 +45,22 @@ public class PlayGame : MonoBehaviour
 
     public void RunGame()
     {
-        
+        int n = 0;
+        for (int i = 0; i < _players.Length - n; i++)
+        {
+            for (int ii = 0; ii < _players.Length - n; ii++)
+            {
+                Debug.Log($"{_players[i]} is playing against {_players[ii]}");
+            }
+
+            n++;
+        }
     }
     
     public void RunMatch(Player player1, Player player2)
     {   
         int rounds = _rounds + UnityEngine.Random.Range(-_roundLengthVariance, _roundLengthVariance);
-        MatchData data = new MatchData();
+        MatchData data = new MatchData(player1.Name, player2.Name);
 
         data._player1Moves.Add(player1._firstMove);
         data._player2Moves.Add(player2._firstMove);
