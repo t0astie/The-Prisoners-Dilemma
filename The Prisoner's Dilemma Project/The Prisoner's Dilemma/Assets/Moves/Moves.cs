@@ -25,6 +25,7 @@ public struct GameData
 
 public abstract class Moves : MonoBehaviour
 {
+    public int _priority;
     public abstract Action Play(GameData data);
 
     public Action GetAction(GameData data, Retaliation retaliation)

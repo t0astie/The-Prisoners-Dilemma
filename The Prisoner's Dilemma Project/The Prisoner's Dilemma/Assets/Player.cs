@@ -6,14 +6,28 @@ public class Player : MonoBehaviour
 {
     public string _name;
     public int _points;
-    public Dictionary<Moves, int> _moves = new Dictionary<Moves, int>();
+    public Action _firstMove;
+    public Moves[] _moves;
 
     private void Start() 
     {
-        foreach (Moves move in GetComponents<Moves>())
+        _moves = gameObject.GetComponents<Moves>();
+    }
+
+    public Action Play(GameData data)
+    {
+        int priority = 999;
+        Action action = Action.None;
+
+        foreach (Moves move in _moves)
         {
-            _moves.Add(move, 0);
+            if (move._priority < priority)
+            {
+                action = move.Play(data);
+            }
         }
+
+        return action;
     }
 
     public Player(string name)

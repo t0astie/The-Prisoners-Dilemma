@@ -6,77 +6,46 @@ using UnityEngine;
 
 public class PlayGame : MonoBehaviour
 {
-    int[,] playerPoints = {{1,5}, {0, 3}};
-    int player1Score;
-    int player2Score;
+    int[,] _playerPoints = {{1,5}, {0, 3}};
+    public int _rounds, _roundLengthVariance;
 
-    bool playerTurn; // Player 1 is 0, player 2 is 1
+    public Player[] _players;
 
-    int player1Move; // 0 is defect, 1 is cooperate
-    int player2Move;
-
-    int turns;
-
-    public void Play(string s)
+    private void Start() 
     {
-        if (s == "Defect")
-        {
-            if (playerTurn)
-            {
-                playerTurn = !playerTurn;
-                turns++;
-                player2Move = 0;
-                return;
-            }
-
-            playerTurn = !playerTurn;
-            turns++;
-            player1Move = 0;
-            return;
-        }
-
-        if (s == "Cooperate")
-        {
-            if (playerTurn)
-            {
-                playerTurn = !playerTurn;
-                turns++;
-                player2Move = 1;
-                return;
-            }
-
-            playerTurn = !playerTurn;
-            turns++;
-            player1Move = 1;
-            return;
-        }
-
-        Debug.LogWarning("Invalid User entry. Please try again");
+        RunGame();
     }
 
-    private void Update() 
+    public void RunGame()
     {
-        if (turns == 2)
+        
+    }
+    public void RunMatch(Player player1, Player player2)
+    {   
+        int rounds = _rounds + UnityEngine.Random.Range(-_roundLengthVariance, _roundLengthVariance);
+        GameData data = new GameData();
+
+        data._player1Moves.Add(player1._firstMove);
+        data._player2Moves.Add(player2._firstMove);
+
+        for (int i = 0; i < rounds; i++)
         {
-            turns = 0;
-            string player1 = "cooperated";
-            string player2 = "cooperated";
+            Action player1Move = player1.Play(data);
+            Action player2Move = player2.Play(data);
 
-            if (player1Move == 0)
-            {
-                player1 = "defected";
-            }
+            data._player1Moves.Add(player1Move);
+            data._player2Moves.Add(player2Move);
 
-            if (player2Move == 0)
-            {
-                player2 = "defected";
-            }
-
-            player1Score += playerPoints[player1Move, player2Move];
-            player2Score += playerPoints[player2Move, player1Move];
-
-            Debug.Log($"Player 1 has {player1} ({playerPoints[player1Move, player2Move]}), player 2 has {player2} ({playerPoints[player2Move, player1Move]})");
-            Debug.Log($"Player 1 score is: {player1Score}, player 2 score is: {player2Score}");
+            GivePoints(player1, player2, player1Move, player2Move);
         }
+    }
+
+    public void GivePoints(Player player1, Player player2, Action action1, Action action2)
+    {
+        int player1Move = action1 == Action.Defect ? 0 : 1;
+        int player2Move = action2 == Action.Defect ? 0 : 1;
+
+        player1._points += _playerPoints[player1Move, player2Move];
+        player2._points += _playerPoints[player2Move, player1Move];
     }
 }
