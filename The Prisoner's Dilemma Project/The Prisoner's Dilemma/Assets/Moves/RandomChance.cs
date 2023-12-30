@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomChance : Moves
+public class RandomChance : Moves   // at any point during the match randomly do RETALIATION
 {
     [Range(0f, 100f)] public float _chance;
     public Retaliation _retaliation;
