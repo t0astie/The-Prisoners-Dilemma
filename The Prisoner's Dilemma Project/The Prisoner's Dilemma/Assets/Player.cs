@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
         _moves = gameObject.GetComponents<Moves>();
     }
 
-    public Action Play(GameData data)
+    public Action Play(MatchData data)
     {
         int priority = 999;
         Action action = Action.None;

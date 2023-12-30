@@ -5,7 +5,7 @@ using UnityEngine;
 public class FirstTurn : Moves
 {
     public Action _action;
-    public override Action Play(GameData data)
+    public override Action Play(MatchData data)
     {
         throw new System.NotImplementedException();
     }

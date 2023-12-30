@@ -17,18 +17,12 @@ public enum Retaliation
     OppisiteOfPreviousTurn
 }
 
-public struct GameData
-{
-    public List<Action> _player1Moves;
-    public List<Action> _player2Moves;
-}
-
 public abstract class Moves : MonoBehaviour
 {
     public int _priority;
-    public abstract Action Play(GameData data);
+    public abstract Action Play(MatchData data);
 
-    public Action GetAction(GameData data, Retaliation retaliation)
+    public Action GetAction(MatchData data, Retaliation retaliation)
     {
         if (retaliation == Retaliation.Defect)
         {

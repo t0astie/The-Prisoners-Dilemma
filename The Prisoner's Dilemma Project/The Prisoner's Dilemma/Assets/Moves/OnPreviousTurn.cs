@@ -6,7 +6,7 @@ public class OnPreviousTurn : Moves
 {
     public Action _action;
     public Retaliation _retaliation;
-    public override Action Play(GameData data)
+    public override Action Play(MatchData data)
     {
         if (data._player2Moves[data._player2Moves.Count - 1] == _action)
         {

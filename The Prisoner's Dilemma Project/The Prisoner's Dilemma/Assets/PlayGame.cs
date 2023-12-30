@@ -4,6 +4,27 @@ using System.Collections.Generic;
 using System.Data.Common;
 using UnityEngine;
 
+public struct GameData
+{
+    public List<MatchData> _matches;
+
+    public GameData()
+    {
+        _matches = new List<MatchData>();
+    }
+}
+
+public struct MatchData
+{
+    public string _player1Name;
+    public string _player2Name;
+    public Player _winner;
+    public int _player1Points;
+    public int _player2Points;
+    public List<Action> _player1Moves;
+    public List<Action> _player2Moves;
+}
+
 public class PlayGame : MonoBehaviour
 {
     int[,] _playerPoints = {{1,5}, {0, 3}};
@@ -20,10 +41,11 @@ public class PlayGame : MonoBehaviour
     {
         
     }
+    
     public void RunMatch(Player player1, Player player2)
     {   
         int rounds = _rounds + UnityEngine.Random.Range(-_roundLengthVariance, _roundLengthVariance);
-        GameData data = new GameData();
+        MatchData data = new MatchData();
 
         data._player1Moves.Add(player1._firstMove);
         data._player2Moves.Add(player2._firstMove);
@@ -36,16 +58,20 @@ public class PlayGame : MonoBehaviour
             data._player1Moves.Add(player1Move);
             data._player2Moves.Add(player2Move);
 
-            GivePoints(player1, player2, player1Move, player2Move);
+            GetPoints(player1Move, player2Move, data);
         }
+
+        data._winner = data._player1Points > data._player2Points ? player1 : player2;
+        player1._points += data._player1Points;
+        player2._points += data._player2Points;
     }
 
-    public void GivePoints(Player player1, Player player2, Action action1, Action action2)
+    public void GetPoints(Action action1, Action action2, MatchData data)
     {
         int player1Move = action1 == Action.Defect ? 0 : 1;
         int player2Move = action2 == Action.Defect ? 0 : 1;
 
-        player1._points += _playerPoints[player1Move, player2Move];
-        player2._points += _playerPoints[player2Move, player1Move];
+        data._player1Points += _playerPoints[player1Move, player2Move];
+        data._player2Points += _playerPoints[player2Move, player1Move];
     }
 }
