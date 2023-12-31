@@ -9,10 +9,16 @@ public class Player : MonoBehaviour
     public int _points;
     public Action _firstMove;
     public Moves[] _moves;
+    public List<Action> _currentRetaliation;
+    int _action;
 
     private void Start() 
     {
         _moves = gameObject.GetComponents<Moves>();
+        if (_currentRetaliation == null)
+        {
+            _currentRetaliation = new List<Action>();
+        }
     }
 
     public Action FirstMove()
@@ -21,7 +27,7 @@ public class Player : MonoBehaviour
         {
             return UnityEngine.Random.Range(0f, 100f) < 50 ? Action.Defect : Action.Cooperate;
         }
-        
+
         return _firstMove;
     }
 
@@ -29,6 +35,19 @@ public class Player : MonoBehaviour
     {
         int priority = 0;
         Action action = Action.None;
+
+        if (_currentRetaliation.Count > 0)
+        {
+            Action customAction = _currentRetaliation[_action];
+            if (_action != _currentRetaliation.Count - 1)
+            {
+                _action++;
+                return customAction;
+            }
+
+            _action = 0;
+        }
+
         foreach (Moves move in _moves)
         {
             if (move._priority > priority)

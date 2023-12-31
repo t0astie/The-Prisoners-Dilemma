@@ -6,7 +6,8 @@ public enum Action
 {
     None,
     Defect,
-    Cooperate
+    Cooperate,
+    CustomAction
 }
 
 public enum Retaliation
@@ -15,6 +16,7 @@ public enum Retaliation
     Defect,
     Cooperate,
     Random,
+    CustomRetaliation,
     SameAsPreviousTurn,
     OppisiteOfPreviousTurn
 }
@@ -23,10 +25,18 @@ public abstract class Moves : MonoBehaviour
 {
     public string Name;
     public int _priority;
+    public Retaliation _retaliation;
+    public List<Action> _customRetaliation;
     public abstract Action Play(MatchData data); // Takes the current match data and which player is playing
 
-    public Action GetAction(MatchData data, Retaliation retaliation)
+    public Action GetAction(MatchData data, Retaliation retaliation, List<Action> customRetaliation, Player player)
     {
+        if (customRetaliation.Count > 0)
+        {
+            player._currentRetaliation = customRetaliation;
+            return customRetaliation[0];
+        }
+
         if (retaliation == Retaliation.Defect)
         {
             return Action.Defect;

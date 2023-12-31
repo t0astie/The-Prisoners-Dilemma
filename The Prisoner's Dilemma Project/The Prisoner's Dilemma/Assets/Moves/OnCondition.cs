@@ -6,7 +6,6 @@ public class OnCondition : Moves    // IF at any point during the match PLAYER d
 {
     public bool _player;    // TRUE is them, FALSE is you
     public Action _action;
-    public Retaliation _retaliation;
     public override Action Play(MatchData data)
     {
         List<Action> pActions = _player == false ? data._player1Moves : data._player2Moves;
@@ -15,7 +14,7 @@ public class OnCondition : Moves    // IF at any point during the match PLAYER d
         {
             if (pActions[i] == _action)
             {
-                return GetAction(data, _retaliation);
+                return GetAction(data, _retaliation, _customRetaliation, GetComponent<Player>());
             }
         }
 
