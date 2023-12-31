@@ -63,7 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 
   _priority: 0
-  _action: 0
+  _retaliation: 0
 --- !u!114 &5480057526271978973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,5 +78,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 
   _priority: 0
+  _player: 0
   _action: 0
   _retaliation: 0
