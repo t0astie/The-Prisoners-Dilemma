@@ -21,6 +21,7 @@ public class NumberOfMovesCondition : Moves
         LessThan,
         EqualTo
     }
+    [System.Serializable]
     public struct PlayerAction
     {
         public MoveType _moveType;
@@ -34,7 +35,6 @@ public class NumberOfMovesCondition : Moves
         Player1Moves,
         Player2Moves
     }
-    public Action _action;
     public List<Condition> _conditions;
     public override Action Play(MatchData data)
     {
