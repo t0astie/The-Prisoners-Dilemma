@@ -6,8 +6,7 @@ public enum Action
 {
     None,
     Defect,
-    Cooperate,
-    CustomAction
+    Cooperate
 }
 
 public enum Retaliation
