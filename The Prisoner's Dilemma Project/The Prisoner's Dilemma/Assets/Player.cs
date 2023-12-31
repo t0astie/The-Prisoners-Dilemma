@@ -15,6 +15,16 @@ public class Player : MonoBehaviour
         _moves = gameObject.GetComponents<Moves>();
     }
 
+    public Action FirstMove()
+    {
+        if (_firstMove == Action.None)
+        {
+            return UnityEngine.Random.Range(0f, 100f) < 50 ? Action.Defect : Action.Cooperate;
+        }
+        
+        return _firstMove;
+    }
+
     public Action Play(MatchData data)
     {
         int priority = 0;

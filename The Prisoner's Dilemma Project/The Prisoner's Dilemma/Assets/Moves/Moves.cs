@@ -14,6 +14,7 @@ public enum Retaliation
     None,
     Defect,
     Cooperate,
+    Random,
     SameAsPreviousTurn,
     OppisiteOfPreviousTurn
 }
@@ -34,6 +35,11 @@ public abstract class Moves : MonoBehaviour
         if (retaliation == Retaliation.Cooperate)
         {
             return Action.Cooperate;
+        }
+
+        if (retaliation == Retaliation.Random)
+        {
+            return Random.Range(0f, 100f) < 50 ? Action.Defect : Action.Cooperate;
         }
 
         if (retaliation == Retaliation.SameAsPreviousTurn)

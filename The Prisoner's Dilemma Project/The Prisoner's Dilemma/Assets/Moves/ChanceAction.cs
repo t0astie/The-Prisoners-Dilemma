@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomChance : Moves   // at any point during the match randomly do RETALIATION
+public class ChanceAction : Moves   // at any point during the match randomly do RETALIATION
 {
     [Range(0f, 100f)] public float _chance;
     public Retaliation _retaliation;
@@ -14,6 +14,6 @@ public class RandomChance : Moves   // at any point during the match randomly do
             return GetAction(data, _retaliation);
         }
 
-        return Action.None;
+        return GetAction(data, _retaliation) == Action.Defect ? Action.Cooperate : Action.Defect;
     }
 }

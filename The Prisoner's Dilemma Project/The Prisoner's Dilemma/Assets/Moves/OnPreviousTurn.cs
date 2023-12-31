@@ -9,8 +9,8 @@ public class OnPreviousTurn : Moves     // IF PLAYER on the previous turn did AC
     public Retaliation _retaliation;
     public override Action Play(MatchData data)
     {
-        List<Action> player = _player == false ? data._player1Moves : data._player2Moves;
-        if (player[player.Count - 1] == _action)
+        List<Action> pActions = _player == false ? data._player1Moves : data._player2Moves;
+        if (pActions[pActions.Count - 1] == _action)
         {
             return GetAction(data, _retaliation);
         }

@@ -75,21 +75,25 @@ public class PlayGame : MonoBehaviour
         int rounds = _rounds + UnityEngine.Random.Range(-_roundLengthVariance, _roundLengthVariance);
         MatchData data = new MatchData(player1, player2);
 
-        data._player1Moves.Add(player1._firstMove);
-        data._player2Moves.Add(player2._firstMove);
+        data._player1Moves.Add(player1.FirstMove());
+        data._player2Moves.Add(player2.FirstMove());
 
-        for (int i = 0; i < rounds; i++)
+        for (int i = 1; i < rounds; i++)    // Starts at 1 because the first move has already been played
         {
-            Action player1Move = player1.Play(data);
-            Action player2Move = player2.Play(data);
-
-            data._player1Moves.Add(player1Move);
-            data._player2Moves.Add(player2Move);
+            Action p1Move = player1.Play(data);
+            Action p2Move = player2.Play(data);
+            data._player1Moves.Add(p1Move);
+            data._player2Moves.Add(p2Move);
         }
 
-        int[] points = GetPoints(data);
-        data._player1Points = points[0];
-        data._player2Points = points[1];
+        for (int i = 0; i < data._player1Moves.Count; i++)
+        {
+            data._player1Points += _playerPoints[data._player1Moves[i] == Action.Defect ? 0 : 1, data._player2Moves[i] == Action.Defect ? 0 : 1];
+            data._player2Points += _playerPoints[data._player2Moves[i] == Action.Defect ? 0 : 1, data._player1Moves[i] == Action.Defect ? 0 : 1];
+        }
+
+        player1._points += data._player1Points;
+        player2._points += data._player2Points;
 
         if (data._player1Points == data._player2Points)
         {
@@ -99,23 +103,7 @@ public class PlayGame : MonoBehaviour
         {
             data._winner = data._player1Points > data._player2Points ? player1 : player2;
         }
-        
-        player1._points += data._player1Points;
-        player2._points += data._player2Points;
 
         return data;
-    }
-
-    public int[] GetPoints(MatchData data)
-    {
-        int[] points = { 0, 0 };
-
-        for (int i = 0; i < data._player1Moves.Count; i++)
-        {
-            points[0] += _playerPoints[data._player1Moves[i] == Action.Defect ? 0 : 1, data._player2Moves[i] == Action.Defect ? 0 : 1];
-            points[1] += _playerPoints[data._player2Moves[i] == Action.Defect ? 0 : 1, data._player1Moves[i] == Action.Defect ? 0 : 1];
-        }
-
-        return points;
     }
 }
