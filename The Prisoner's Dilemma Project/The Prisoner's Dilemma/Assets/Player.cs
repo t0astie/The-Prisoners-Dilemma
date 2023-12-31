@@ -38,14 +38,18 @@ public class Player : MonoBehaviour
 
         if (_currentRetaliation.Count > 0)
         {
+            _action++;
             Action customAction = _currentRetaliation[_action];
-            if (_action != _currentRetaliation.Count - 1)
+            if (_action < _currentRetaliation.Count - 1)
             {
-                _action++;
                 return customAction;
             }
-
-            _action = 0;
+            
+            customAction = _currentRetaliation[_currentRetaliation.Count - 1];
+            _currentRetaliation = new List<Action>();
+            _action = 1;
+            
+            return customAction;
         }
 
         foreach (Moves move in _moves)
