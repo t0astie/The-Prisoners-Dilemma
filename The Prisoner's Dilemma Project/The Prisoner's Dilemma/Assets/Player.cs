@@ -25,8 +25,11 @@ public class Player : MonoBehaviour
             {
                 Action pAction = move.Play(BigBrother(data));
                 
-                action = pAction;
-                priority = move._priority;
+                if (pAction != Action.None)
+                {
+                    action = pAction;
+                    priority = move._priority;
+                }
             }
         }
 

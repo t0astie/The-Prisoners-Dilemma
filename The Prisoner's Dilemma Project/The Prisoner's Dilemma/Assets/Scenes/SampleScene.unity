@@ -556,8 +556,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919e6644acde1cf4888d0119fa6b37a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rounds: 3
-  _roundLengthVariance: 1
+  _rounds: 10
+  _roundLengthVariance: 3
   gameData:
     _matches: []
   _players:
@@ -582,7 +582,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5480057526271978963, guid: 2518f971804f4d145ab5bbd2ef4c1885, type: 3}
   m_PrefabInstance: {fileID: 5480057526728055621}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1499283915}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5ed3c586f2634844ae5bddad87213da, type: 3}
@@ -748,6 +748,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1042831438}
   m_CullTransparentMesh: 1
+--- !u!1 &1499283915 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5480057526271978960, guid: 2518f971804f4d145ab5bbd2ef4c1885, type: 3}
+  m_PrefabInstance: {fileID: 5480057526728055621}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1499283919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499283915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9784842c28245646930dfd35b023f25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  _priority: 2
+  _player: 1
+  _action: 02000000010000000200000001000000
+  _retaliation: 1
+--- !u!114 &1499283920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499283915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f82c0e5f467ae747ba3f9ee3d5836bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  _priority: 3
+  _player: 0
+  _action: 1
+  _retaliation: 1
 --- !u!114 &1761502238 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5480057526271978963, guid: 2518f971804f4d145ab5bbd2ef4c1885, type: 3}
