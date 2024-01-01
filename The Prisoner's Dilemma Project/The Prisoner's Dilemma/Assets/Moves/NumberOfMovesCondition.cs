@@ -11,7 +11,6 @@ public class NumberOfMovesCondition : Moves
         public PlayerAction _playerAction;
         public Checks _check;
         public PlayerAction _checkAction;
-        public int _exactNumberOfMoves;
     }
 
     [System.Serializable]
@@ -31,7 +30,6 @@ public class NumberOfMovesCondition : Moves
     [System.Serializable]
     public enum MoveType
     {
-        ExactAmount,
         Player1Moves,
         Player2Moves
     }
@@ -51,61 +49,27 @@ public class NumberOfMovesCondition : Moves
 
     bool CheckCondition(Condition _condition, MatchData data)
     {
-        if (_condition._playerAction._moveType == MoveType.ExactAmount)
-        {
-            List<Action> pMoves = _condition._playerAction._moveType == MoveType.Player1Moves ? data._player1Moves : data._player2Moves;
-            int n = GetMoves(_condition._playerAction._action, pMoves);
-            if (_condition._check == Checks.GreaterThan)
-            {
-                if (n < _condition._exactNumberOfMoves)
-                {
-                    return false;
-                }
-            }
-
-            if (_condition._check == Checks.LessThan)
-            {
-                if (n > _condition._exactNumberOfMoves)
-                {
-                    return false;
-                }
-            }
-
-            if (_condition._check == Checks.EqualTo)
-            {
-                if (n != _condition._exactNumberOfMoves)
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
+        List<Action> p1Moves = _condition._playerAction._moveType == MoveType.Player1Moves ? data._player1Moves : data._player2Moves;
+        List<Action> p2Moves = _condition._checkAction._moveType == MoveType.Player1Moves ? data._player1Moves : data._player2Moves;
 
         if (_condition._check == Checks.GreaterThan)
         {
-            List<Action> p1Moves = _condition._playerAction._moveType == MoveType.Player1Moves ? data._player1Moves : data._player2Moves;
-            List<Action> p2Moves = _condition._checkAction._moveType == MoveType.Player1Moves ? data._player1Moves : data._player2Moves;
-            if (GetMoves(_condition._playerAction._action, p1Moves) < GetMoves(_condition._checkAction._action, p2Moves))
+            if (GetMoves(_condition._playerAction._action, p1Moves) <= GetMoves(_condition._checkAction._action, p2Moves))
             {
                 return false;
             }
         }
 
-        if (_condition._check == Checks.GreaterThan)
+        if (_condition._check == Checks.LessThan)
         {
-            List<Action> p1Moves = _condition._playerAction._moveType == MoveType.Player1Moves ? data._player1Moves : data._player2Moves;
-            List<Action> p2Moves = _condition._checkAction._moveType == MoveType.Player1Moves ? data._player1Moves : data._player2Moves;
-            if (GetMoves(_condition._playerAction._action, p1Moves) > GetMoves(_condition._checkAction._action, p2Moves))
+            if (GetMoves(_condition._playerAction._action, p1Moves) >= GetMoves(_condition._checkAction._action, p2Moves))
             {
                 return false;
             }
         }
 
-        if (_condition._check == Checks.GreaterThan)
+        if (_condition._check == Checks.EqualTo)
         {
-            List<Action> p1Moves = _condition._playerAction._moveType == MoveType.Player1Moves ? data._player1Moves : data._player2Moves;
-            List<Action> p2Moves = _condition._checkAction._moveType == MoveType.Player1Moves ? data._player1Moves : data._player2Moves;
             if (GetMoves(_condition._playerAction._action, p1Moves) != GetMoves(_condition._checkAction._action, p2Moves))
             {
                 return false;
