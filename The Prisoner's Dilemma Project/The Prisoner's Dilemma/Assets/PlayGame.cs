@@ -39,11 +39,12 @@ public class PlayGame : MonoBehaviour
     int[,] _playerPoints = {{1,5}, {0, 3}};
     public int _rounds, _roundLengthVariance;
     public GameData gameData;
-    public Player[] _players;
+    public List<Player> _players;
 
-    private void Start() 
+    public void AddPlayer(GameObject obj)
     {
-        
+        Player p = obj.GetComponent<Player>();
+        _players.Add(p);
     }
 
     private void Update() 
@@ -58,9 +59,9 @@ public class PlayGame : MonoBehaviour
     public void RunGame()
     {
         int n = 0;
-        for (int i = 0; i < _players.Length; i++)
+        for (int i = 0; i < _players.Count; i++)
         {
-            for (int ii = n; ii < _players.Length; ii++)
+            for (int ii = n; ii < _players.Count; ii++)
             {
                 Debug.Log($"{_players[i].Name} is playing against {_players[ii].Name}");
                gameData._matches.Add(RunMatch(_players[i], _players[ii]));

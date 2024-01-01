@@ -22,7 +22,6 @@ public enum Retaliation
 
 public abstract class Moves : MonoBehaviour
 {
-    public string Name;
     public int _priority;
     public Retaliation _retaliation;
     public List<Action> _customRetaliation;
