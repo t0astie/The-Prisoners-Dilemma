@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public enum Action
@@ -26,6 +28,11 @@ public abstract class Moves : MonoBehaviour
     public Retaliation _retaliation;
     public List<Action> _customRetaliation;
     public abstract Action Play(MatchData data); // Takes the current match data and which player is playing
+    public void SetPriority(int value)
+    {
+        string t = GetComponentInChildren<TMP_Dropdown>().options[value].text;
+        Debug.Log(t);
+    }
 
     public Action GetAction(MatchData data, Retaliation retaliation, List<Action> customRetaliation, Player player)
     {
@@ -47,7 +54,7 @@ public abstract class Moves : MonoBehaviour
 
         if (retaliation == Retaliation.Random)
         {
-            return Random.Range(0f, 100f) < 50 ? Action.Defect : Action.Cooperate;
+            return UnityEngine.Random.Range(0f, 100f) < 50 ? Action.Defect : Action.Cooperate;
         }
 
         if (retaliation == Retaliation.SameAsPreviousTurn)
