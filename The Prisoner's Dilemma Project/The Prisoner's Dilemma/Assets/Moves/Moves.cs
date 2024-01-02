@@ -28,6 +28,11 @@ public abstract class Moves : MonoBehaviour
     public Retaliation _retaliation;
     public List<Action> _customRetaliation;
     public abstract Action Play(MatchData data); // Takes the current match data and which player is playing
+    public virtual void LoadData(Moves m)
+    {
+        _retaliation = m._retaliation;
+        _customRetaliation = m._customRetaliation;
+    }
 
     public Action GetAction(MatchData data, Retaliation retaliation, List<Action> customRetaliation, Player player)
     {

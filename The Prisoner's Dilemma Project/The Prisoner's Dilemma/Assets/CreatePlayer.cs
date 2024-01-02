@@ -25,8 +25,9 @@ public class CreatePlayer : MonoBehaviour
         {
             return;
         }
-        
+
         Moves move = currentPlayerObj.AddComponent(m.GetType()) as Moves;
+        move.LoadData(m);
         currentPlayer._moves.Add(move);
     }
 }

@@ -20,4 +20,12 @@ public class ChanceAction : Moves   // at any point during the match randomly do
     {
         _chance = n;
     }
+
+    public override void LoadData(Moves m)
+    {
+        base.LoadData(m);
+
+        ChanceAction ca = m as ChanceAction;
+        _chance = ca._chance;
+    }
 }
