@@ -92,4 +92,14 @@ public class NumberOfMovesCondition : Moves
 
         return n;
     }
+
+    public override bool CheckMove()
+    {
+        if (_retaliation == Retaliation.None && _customRetaliation.Count == 0)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

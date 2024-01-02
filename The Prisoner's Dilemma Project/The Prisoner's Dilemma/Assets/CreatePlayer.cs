@@ -21,7 +21,7 @@ public class CreatePlayer : MonoBehaviour
 
     public void AddMove(Moves m)
     {
-        if (m._customRetaliation.Count == 0 && m._retaliation == Retaliation.None)
+        if (!m.CheckMove())
         {
             return;
         }

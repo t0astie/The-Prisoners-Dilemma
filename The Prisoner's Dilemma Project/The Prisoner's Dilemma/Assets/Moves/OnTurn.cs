@@ -19,4 +19,14 @@ public class OnTurn : Moves
 
         return Action.None;
     }
+
+    public override bool CheckMove()
+    {
+        if (_retaliation == Retaliation.None && _customRetaliation.Count == 0)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

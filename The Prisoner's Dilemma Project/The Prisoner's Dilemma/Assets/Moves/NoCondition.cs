@@ -8,4 +8,14 @@ public class NoCondition : Moves    // do RETALIATION
     {
         return GetAction(data, _retaliation, _customRetaliation, GetComponent<Player>());
     }
+
+    public override bool CheckMove()
+    {
+        if (_retaliation == Retaliation.None && _customRetaliation.Count == 0)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

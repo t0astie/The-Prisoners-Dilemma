@@ -21,11 +21,23 @@ public class ChanceAction : Moves   // at any point during the match randomly do
         _chance = n;
     }
 
+    public override bool CheckMove()
+    {
+        if (_retaliation == Retaliation.None && _customRetaliation.Count == 0)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
     public override void LoadData(Moves m)
     {
         base.LoadData(m);
 
-        ChanceAction ca = m as ChanceAction;
-        _chance = ca._chance;
+        if (m is ChanceAction chanceMove)
+        {
+            _chance = chanceMove._chance;
+        }
     }
 }

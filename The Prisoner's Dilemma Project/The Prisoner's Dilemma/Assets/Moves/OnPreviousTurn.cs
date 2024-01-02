@@ -16,4 +16,14 @@ public class OnPreviousTurn : Moves     // IF PLAYER on the previous turn did AC
 
         return Action.None;
     }
+
+    public override bool CheckMove()
+    {
+        if (_retaliation == Retaliation.None && _customRetaliation.Count == 0)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }
