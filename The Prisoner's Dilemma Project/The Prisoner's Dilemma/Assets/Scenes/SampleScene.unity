@@ -1631,7 +1631,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7380450891587276666, guid: 86fad9ef060523a47aa4d591b62da6ab, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7380450891587276666, guid: 86fad9ef060523a47aa4d591b62da6ab, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3338,6 +3338,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7380450891587276667, guid: 86fad9ef060523a47aa4d591b62da6ab, type: 3}
+      propertyPath: move
+      value: 
+      objectReference: {fileID: 1495875140}
     - target: {fileID: 7380450891587276669, guid: 86fad9ef060523a47aa4d591b62da6ab, type: 3}
       propertyPath: m_Name
       value: Custom Retaliation

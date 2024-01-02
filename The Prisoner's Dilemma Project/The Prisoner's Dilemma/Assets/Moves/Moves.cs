@@ -31,7 +31,7 @@ public abstract class Moves : MonoBehaviour
     public virtual void LoadData(Moves m)
     {
         _retaliation = m._retaliation;
-        _customRetaliation = m._customRetaliation;
+        _customRetaliation = new List<Action>(m._customRetaliation); // Deep copy of the list
     }
 
     public Action GetAction(MatchData data, Retaliation retaliation, List<Action> customRetaliation, Player player)

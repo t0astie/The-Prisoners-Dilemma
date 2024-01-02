@@ -26,8 +26,10 @@ public class CreatePlayer : MonoBehaviour
             return;
         }
 
+        // Create a new instance of the Moves class and copy data
         Moves move = currentPlayerObj.AddComponent(m.GetType()) as Moves;
         move.LoadData(m);
+
         currentPlayer._moves.Add(move);
     }
 }

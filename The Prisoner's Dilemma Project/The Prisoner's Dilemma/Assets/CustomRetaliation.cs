@@ -29,6 +29,7 @@ public class CustomRetaliation : MonoBehaviour
     }
     public void AddAction()
     {
+        Debug.Log("add");
         string action = tMP_Dropdown.GetComponentInChildren<TextMeshProUGUI>().text;
         GetComponentInParent<Moves>()._customRetaliation.Add(TextToAction(action));
         text.text += "\n";
