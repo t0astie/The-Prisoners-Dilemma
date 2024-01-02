@@ -3,36 +3,50 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
+[System.Serializable]
+public struct Condition
+{
+    public PlayerAction _playerAction;
+    public Checks _check;
+    public PlayerAction _checkAction;
+
+    public Condition(MoveType move1, MoveType move2, Action action1, Action action2, Checks checks)
+    {
+        _playerAction = new PlayerAction(move1, action1);
+        _check = checks;
+        _checkAction = new PlayerAction(move2, action2);
+    }
+}
+
+[System.Serializable]
+public enum Checks
+{
+    GreaterThan,
+    LessThan,
+    EqualTo
+}
+[System.Serializable]
+public struct PlayerAction
+{
+    public MoveType _moveType;
+    public Action _action;
+    public PlayerAction(MoveType moveType, Action action)
+    {
+        _moveType = moveType;
+        _action = action;
+    }
+}
+
+[System.Serializable]
+public enum MoveType
+{
+    Player1Moves,
+    Player2Moves
+}
+
 public class NumberOfMovesCondition : Moves
 {
-    [System.Serializable]
-    public struct Condition
-    {
-        public PlayerAction _playerAction;
-        public Checks _check;
-        public PlayerAction _checkAction;
-    }
-
-    [System.Serializable]
-    public enum Checks
-    {
-        GreaterThan,
-        LessThan,
-        EqualTo
-    }
-    [System.Serializable]
-    public struct PlayerAction
-    {
-        public MoveType _moveType;
-        public Action _action;
-    }
-
-    [System.Serializable]
-    public enum MoveType
-    {
-        Player1Moves,
-        Player2Moves
-    }
+    
     public List<Condition> _conditions;
     public override Action Play(MatchData data)
     {
@@ -79,6 +93,12 @@ public class NumberOfMovesCondition : Moves
         return true;
     }
 
+    public void AddCondition(MoveType move1, MoveType move2, Action action1, Action action2, Checks checks)
+    {
+        Condition c = new Condition(move1, move2, action1, action2, checks);
+        _conditions.Add(c);
+    }
+
     int GetMoves(Action actionToCheck, List<Action> actions)
     {
         int n = 0;
@@ -100,6 +120,21 @@ public class NumberOfMovesCondition : Moves
             return false;
         }
 
+        if (_conditions.Count == 0)
+        {
+            return false;
+        }
+
         return true;
+    }
+
+    public override void LoadData(Moves m)
+    {
+        base.LoadData(m);
+
+        if (m is NumberOfMovesCondition numberOfMovesCondition)
+        {
+            _conditions = new List<Condition>(numberOfMovesCondition._conditions);
+        }
     }
 }

@@ -27,6 +27,11 @@ public class OnTurn : Moves
             return false;
         }
 
+        if (_turn < 0)
+        {
+            return false;
+        }
+
         return true;
     }
 }

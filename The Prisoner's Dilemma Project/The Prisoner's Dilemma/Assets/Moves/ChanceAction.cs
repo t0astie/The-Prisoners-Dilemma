@@ -25,6 +25,12 @@ public class ChanceAction : Moves   // at any point during the match randomly do
     {
         if (_retaliation == Retaliation.None && _customRetaliation.Count == 0)
         {
+            Debug.Log("False");
+            return false;
+        }
+
+        if (_chance <= 0)
+        {
             return false;
         }
 

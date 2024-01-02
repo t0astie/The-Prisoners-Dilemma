@@ -28,6 +28,11 @@ public class OnCondition : Moves    // IF at any point during the match PLAYER d
             return false;
         }
 
+        if (_action == Action.None)
+        {
+            return false;
+        }
+
         return true;
     }
 }

@@ -80,8 +80,7 @@ public abstract class Moves : MonoBehaviour
 
     public void ChangeRetaliation(int n)
     {
-        string s = transform.GetChild(0).GetComponent<TMP_Dropdown>().options[n].text;
-        _retaliation = TextToRetaliation(s);
+        _retaliation = IntToRetaliation(n);
     }
 
     public void ActionToCustomRetaliation(string action)
@@ -104,34 +103,34 @@ public abstract class Moves : MonoBehaviour
         return Action.None;
     }
 
-    Retaliation TextToRetaliation(string s)
+    Retaliation IntToRetaliation(int n)
     {
-        if (s == "Defect")
+        if (n == 1)
         {
             return Retaliation.Defect;
         }
 
-        if (s == "Cooperate")
+        if (n == 2)
         {
             return Retaliation.Cooperate;
         }
 
-        if (s == "Random")
+        if (n == 3)
         {
             return Retaliation.Random;
         }
 
-        if (s == "Same as previous turn")
+        if (n == 4)
         {
             return Retaliation.SameAsPreviousTurn;
         }
 
-        if (s == "Oppisite of previous turn")
+        if (n == 5)
         {
             return Retaliation.OppisiteOfPreviousTurn;
         }
 
-        if (s == "Custom retaliation")
+        if (n == 6)
         {
             return Retaliation.CustomRetaliation;
         }

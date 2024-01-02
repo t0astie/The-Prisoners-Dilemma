@@ -24,6 +24,11 @@ public class OnPreviousTurn : Moves     // IF PLAYER on the previous turn did AC
             return false;
         }
 
+        if (_action == Action.None)
+        {
+            return false;
+        }
+
         return true;
     }
 }
