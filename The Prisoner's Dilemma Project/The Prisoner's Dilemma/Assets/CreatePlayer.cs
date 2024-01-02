@@ -6,19 +6,27 @@ public class CreatePlayer : MonoBehaviour
 {
     PlayGame game;
     public GameObject _playerPrefab;
+    public GameObject currentPlayerObj;
+    public Player currentPlayer;
     private void Start() 
     {
-        game = FindObjectOfType<PlayGame>();
+        game = GetComponentInParent<PlayGame>();
     }
 
     void NewPlayer()
     {
-        GameObject player = Instantiate(_playerPrefab);
-        game.AddPlayer(player);
+        currentPlayerObj = Instantiate(_playerPrefab);
+        currentPlayer = currentPlayerObj.GetComponent<Player>();
     }
 
-    public void ChanceAction(Moves moves)
+    public void AddMove(Moves m)
     {
+        if (m._customRetaliation.Count == 0 && m._retaliation == Retaliation.None)
+        {
+            return;
+        }
         
+        Moves move = currentPlayerObj.AddComponent(m.GetType()) as Moves;
+        currentPlayer._moves.Add(move);
     }
 }

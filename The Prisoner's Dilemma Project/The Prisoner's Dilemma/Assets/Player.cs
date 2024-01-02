@@ -8,13 +8,12 @@ public class Player : MonoBehaviour
     [SerializeField] private string _name;
     public int _points;
     public Action _firstMove;
-    public Moves[] _moves;
+    public List<Moves> _moves;
     public List<Action> _currentRetaliation;
     int _action;
 
     private void Start() 
     {
-        _moves = gameObject.GetComponents<Moves>();
         if (_currentRetaliation == null)
         {
             _currentRetaliation = new List<Action>();
