@@ -83,19 +83,19 @@ public abstract class Moves : MonoBehaviour
         _retaliation = IntToRetaliation(n);
     }
 
-    public void ActionToCustomRetaliation(string action)
+    public void ActionToCustomRetaliation(int n)
     {
-        _customRetaliation.Add(TextToAction(action));
+        _customRetaliation.Add(IntToAction(n));
     }
 
-    Action TextToAction(string s)
+    public Action IntToAction(int n)
     {
-        if (s == "Defect")
+        if (n == 1)
         {
             return Action.Defect;
         }
 
-        if (s == "Cooperate")
+        if (n == 2)
         {
             return Action.Cooperate;
         }
@@ -103,7 +103,7 @@ public abstract class Moves : MonoBehaviour
         return Action.None;
     }
 
-    Retaliation IntToRetaliation(int n)
+    public Retaliation IntToRetaliation(int n)
     {
         if (n == 1)
         {

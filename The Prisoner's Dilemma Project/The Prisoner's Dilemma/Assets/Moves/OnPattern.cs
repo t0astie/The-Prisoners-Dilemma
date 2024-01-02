@@ -26,6 +26,11 @@ public class OnPattern : Moves      // IF PLAYER does a pattern of ACTIONs do RE
         return GetAction(data, _retaliation, _customRetaliation, GetComponent<Player>());
     }
 
+    public void ChangePlayer(bool b)
+    {
+        _player = b;
+    }
+
     public override bool CheckMove()
     {
         if (_retaliation == Retaliation.None && _customRetaliation.Count == 0)
@@ -39,5 +44,16 @@ public class OnPattern : Moves      // IF PLAYER does a pattern of ACTIONs do RE
         }
 
         return true;
+    }
+
+    public override void LoadData(Moves m)
+    {
+        base.LoadData(m);
+
+        if (m is OnPattern onPattern)
+        {
+            _player = onPattern._player;
+            _action = onPattern._action;
+        }
     }
 }

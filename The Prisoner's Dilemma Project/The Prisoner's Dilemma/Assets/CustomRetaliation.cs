@@ -31,19 +31,19 @@ public class CustomRetaliation : MonoBehaviour
     {
         Debug.Log("add");
         string action = tMP_Dropdown.GetComponentInChildren<TextMeshProUGUI>().text;
-        GetComponentInParent<Moves>()._customRetaliation.Add(TextToAction(action));
+        GetComponentInParent<Moves>()._customRetaliation.Add(IntToAction(tMP_Dropdown.value));
         text.text += "\n";
         text.text += action;
     }
 
-    Action TextToAction(string s)
+    public Action IntToAction(int n)
     {
-        if (s == "Defect")
+        if (n == 0)
         {
             return Action.Defect;
         }
 
-        if (s == "Cooperate")
+        if (n == 1)
         {
             return Action.Cooperate;
         }

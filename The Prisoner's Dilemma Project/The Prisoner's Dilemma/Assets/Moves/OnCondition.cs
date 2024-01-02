@@ -21,6 +21,16 @@ public class OnCondition : Moves    // IF at any point during the match PLAYER d
         return Action.None;
     }
 
+    public void ChangePlayer(bool b)
+    {
+        _player = b;
+    }
+
+    public void ChangeAction(int n)
+    {
+        _action = IntToAction(n);
+    }
+
     public override bool CheckMove()
     {
         if (_retaliation == Retaliation.None && _customRetaliation.Count == 0)
@@ -34,5 +44,16 @@ public class OnCondition : Moves    // IF at any point during the match PLAYER d
         }
 
         return true;
+    }
+
+    public override void LoadData(Moves m)
+    {
+        base.LoadData(m);
+
+        if (m is OnCondition onCondition)
+        {
+            _player = onCondition._player;
+            _action = onCondition._action;
+        }
     }
 }
