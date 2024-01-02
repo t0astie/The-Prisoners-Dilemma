@@ -429,7 +429,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Minecraft
+  m_text: None
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -888,18 +888,26 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Minecraft
+    - m_Text: None
       m_Image: {fileID: 0}
-    - m_Text: csgpo
+    - m_Text: Defect
       m_Image: {fileID: 0}
-    - m_Text: dsfsdfsdfsd
+    - m_Text: Cooperate
+      m_Image: {fileID: 0}
+    - m_Text: Random
+      m_Image: {fileID: 0}
+    - m_Text: Same as previous turn
+      m_Image: {fileID: 0}
+    - m_Text: Oppisite of previous turn
+      m_Image: {fileID: 0}
+    - m_Text: Custom retaliation
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1495875140}
         m_TargetAssemblyTypeName: Moves, Assembly-CSharp
-        m_MethodName: SetPriority
+        m_MethodName: ChangeRetaliation
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1176,6 +1184,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 470908632}
   tMP_Dropdown: {fileID: 1583837962}
+  objects:
+  - {fileID: 470908630}
+  - {fileID: 1583837960}
+  - {fileID: 1067619614}
 --- !u!1 &412822327 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5480057526271978960, guid: 2518f971804f4d145ab5bbd2ef4c1885, type: 3}
@@ -2092,7 +2104,19 @@ MonoBehaviour:
   m_Value: 60.1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1495875140}
+        m_TargetAssemblyTypeName: ChanceAction, Assembly-CSharp
+        m_MethodName: EditChance
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &897838646
 GameObject:
   m_ObjectHideFlags: 0

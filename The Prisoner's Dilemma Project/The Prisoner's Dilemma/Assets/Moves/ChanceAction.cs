@@ -16,13 +16,8 @@ public class ChanceAction : Moves   // at any point during the match randomly do
         return GetAction(data, _retaliation, _customRetaliation, GetComponent<Player>()) == Action.Defect ? Action.Cooperate : Action.Defect;
     }
 
-    public void ChangeRetaliation(string action)
+    public void EditChance(float n)
     {
-        _retaliation = TextToRetaliation(action);
-    }
-
-    public void ActionToCustomRetaliation(string action)
-    {
-        _customRetaliation.Add(TextToAction(action));
+        _chance = n;
     }
 }

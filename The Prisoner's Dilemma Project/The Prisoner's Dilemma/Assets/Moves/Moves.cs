@@ -17,9 +17,9 @@ public enum Retaliation
     Defect,
     Cooperate,
     Random,
-    CustomRetaliation,
     SameAsPreviousTurn,
-    OppisiteOfPreviousTurn
+    OppisiteOfPreviousTurn,
+    CustomRetaliation
 }
 
 public abstract class Moves : MonoBehaviour
@@ -28,11 +28,6 @@ public abstract class Moves : MonoBehaviour
     public Retaliation _retaliation;
     public List<Action> _customRetaliation;
     public abstract Action Play(MatchData data); // Takes the current match data and which player is playing
-    public void SetPriority(int value)
-    {
-        string t = GetComponentInChildren<TMP_Dropdown>().options[value].text;
-        Debug.Log(t);
-    }
 
     public Action GetAction(MatchData data, Retaliation retaliation, List<Action> customRetaliation, Player player)
     {
@@ -77,7 +72,18 @@ public abstract class Moves : MonoBehaviour
         return Action.None;
     }
 
-    public Action TextToAction(string s)
+    public void ChangeRetaliation(int n)
+    {
+        string s = transform.GetChild(0).GetComponent<TMP_Dropdown>().options[n].text;
+        _retaliation = TextToRetaliation(s);
+    }
+
+    public void ActionToCustomRetaliation(string action)
+    {
+        _customRetaliation.Add(TextToAction(action));
+    }
+
+    Action TextToAction(string s)
     {
         if (s == "Defect")
         {
@@ -92,7 +98,7 @@ public abstract class Moves : MonoBehaviour
         return Action.None;
     }
 
-    public Retaliation TextToRetaliation(string s)
+    Retaliation TextToRetaliation(string s)
     {
         if (s == "Defect")
         {
@@ -117,6 +123,11 @@ public abstract class Moves : MonoBehaviour
         if (s == "Oppisite of previous turn")
         {
             return Retaliation.OppisiteOfPreviousTurn;
+        }
+
+        if (s == "Custom retaliation")
+        {
+            return Retaliation.CustomRetaliation;
         }
         
         return Retaliation.None;
