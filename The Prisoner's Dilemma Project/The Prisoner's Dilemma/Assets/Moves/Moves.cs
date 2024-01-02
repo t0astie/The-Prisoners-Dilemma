@@ -76,4 +76,49 @@ public abstract class Moves : MonoBehaviour
 
         return Action.None;
     }
+
+    public Action TextToAction(string s)
+    {
+        if (s == "Defect")
+        {
+            return Action.Defect;
+        }
+
+        if (s == "Cooperate")
+        {
+            return Action.Cooperate;
+        }
+        
+        return Action.None;
+    }
+
+    public Retaliation TextToRetaliation(string s)
+    {
+        if (s == "Defect")
+        {
+            return Retaliation.Defect;
+        }
+
+        if (s == "Cooperate")
+        {
+            return Retaliation.Cooperate;
+        }
+
+        if (s == "Random")
+        {
+            return Retaliation.Random;
+        }
+
+        if (s == "Same as previous turn")
+        {
+            return Retaliation.SameAsPreviousTurn;
+        }
+
+        if (s == "Oppisite of previous turn")
+        {
+            return Retaliation.OppisiteOfPreviousTurn;
+        }
+        
+        return Retaliation.None;
+    }
 }
