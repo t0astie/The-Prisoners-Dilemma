@@ -13,10 +13,15 @@ public class CreatePlayer : MonoBehaviour
         game = GetComponentInParent<PlayGame>();
     }
 
-    void NewPlayer()
+    public void NewPlayer()
     {
         currentPlayerObj = Instantiate(_playerPrefab);
         currentPlayer = currentPlayerObj.GetComponent<Player>();
+    }
+
+    public void AddPlayer()
+    {
+        game._players.Add(currentPlayer);
     }
 
     public void AddMove(Moves m)
